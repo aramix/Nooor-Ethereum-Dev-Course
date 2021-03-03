@@ -5,7 +5,14 @@ import getWeb3 from './getWeb3';
 import './App.css';
 
 class App extends Component {
-	state = { storageValue: '', web3: null, accounts: null, contract: null, message: '' };
+	state = {
+    storageValue: '', 
+    web3: null, 
+    accounts: null, 
+    contract: null, 
+    message: '', 
+    isLoading: false 
+  };
 
 	componentDidMount = async () => {
 		try {
@@ -23,9 +30,11 @@ class App extends Component {
 				deployedNetwork && deployedNetwork.address
 			);
 
+      const response = await contract.methods.get().call();
+
 			// Set web3, accounts, and contract to the state, and then proceed with an
 			// example of interacting with the contract's methods.
-			this.setState({ web3, accounts, contract });
+			this.setState({ web3, accounts, contract, deployedAddress: deployedNetwork.address, storageValue: response });
 		} catch (error) {
 			// Catch any errors for any of the above operations.
 			alert(`Failed to load web3, accounts, or contract. Check console for details.`);
@@ -35,15 +44,16 @@ class App extends Component {
 
 	runExample = async () => {
 		const { accounts, contract, message } = this.state;
-
+    
 		// Stores a given value, 5 by default.
-		await contract.methods.set(message).send({ from: accounts[0] });
+    this.setState({ isLoading: true});
+		const tx = await contract.methods.set(message).send({ from: accounts[0] });
 
 		// Get the value from the contract to prove it worked.
 		const response = await contract.methods.get().call();
-
+    console.log(tx)
 		// Update state with the result.
-		this.setState({ storageValue: response });
+		this.setState({ storageValue: response, transactionHash: tx.transactionHash, isLoading: false });
 	};
 
 	handleInput = (event) => {
@@ -58,21 +68,13 @@ class App extends Component {
 		}
 		return (
 			<div className="App">
-				<h1>Good to Go!</h1>
-				<p>Your Truffle Box is installed and ready.</p>
-				<h2>Smart Contract Example</h2>
-				<p>
-					If your contracts compiled and migrated successfully, below will show a stored
-					value of 5 (by default).
-				</p>
-				<p>
-					Try changing the value stored on <strong>line 40</strong> of App.js.
-				</p>
-				<div>The stored value is: {this.state.storageValue}</div>
+				<div>Deployed contract address: {this.state.deployedAddress}</div>
+				<div>Latest Transaction Hash: <a target="_blank" href={`https://ropsten.etherscan.io/tx/${this.state.transactionHash}`}>{this.state.transactionHash}</a></div>
 				<div>
 					<input type="text" onChange={this.handleInput} />
 					<button onClick={this.runExample}>Send Message</button>
 				</div>
+				<div>The stored value is: {this.state.isLoading ? "Loading..." : this.state.storageValue}</div>
 			</div>
 		);
 	}
