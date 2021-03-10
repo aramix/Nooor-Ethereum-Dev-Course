@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity 0.7.4;
 
 contract Lottery {
@@ -21,11 +22,13 @@ contract Lottery {
         return address(this).balance;
     }
     
-    function pickWinner() public onlyManager("Winner can be picked only by manager") returns (address) {
-        address payable winner = players[notReallyRandom()%players.length];
-        winner.transfer(getPrizePool());
+    function pickWinner() public onlyManager("Winner can be picked only by manager") {
+        players[notReallyRandom()%players.length].transfer(getPrizePool());
         players = new address payable[](0);
-        return winner;
+    }
+
+    function getPlayers() public view onlyManager("Only Manager can get the list of players") returns (address payable[] memory) {
+      return players;
     }
     
     modifier onlyManager(string memory message) {
