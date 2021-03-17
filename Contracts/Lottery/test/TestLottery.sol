@@ -6,18 +6,18 @@ import "truffle/DeployedAddresses.sol";
 import "../contracts/Lottery.sol";
 
 contract TestLottery {
-  function testItShouldDeploy() public pure {
-    Assert(DeployedAddresses.Lottery());
-  }
+    // function testItShouldDeploy() public pure {
+    //     Lottery lottery = Lottery(DeployedAddresses.Lottery());
 
-  // function testItStoresAValue() public {
-  //   SimpleStorage simpleStorage = SimpleStorage(DeployedAddresses.SimpleStorage());
+    //     Assert(address(lottery));
+    // }
 
-  //   simpleStorage.set(89);
+    function testItShouldAllowAnAccountToEnter() public {
+        Lottery lottery = Lottery(DeployedAddresses.Lottery());
+        // lottery.enter{value: 2 ether}();
+        // address payable[] memory players =
+        //     lottery.getPlayers{from: lottery.manager}();
 
-  //   uint expected = 89;
-
-  //   Assert.equal(simpleStorage.get(), expected, "It should store the value 89.");
-  // }
-
+        Assert.equal(address(tx.origin), address(lottery), "balances not equal");
+    }
 }

@@ -3,6 +3,7 @@ pragma solidity 0.7.4;
 
 contract Lottery {
     address public manager;
+    address payable public winner;
     address payable[] public players;
     
     constructor() {
@@ -21,9 +22,10 @@ contract Lottery {
     function getPrizePool() public view onlyManager("Restricted to manager only") returns(uint) {
         return address(this).balance;
     }
-    
+
     function pickWinner() public onlyManager("Winner can be picked only by manager") {
-        players[notReallyRandom()%players.length].transfer(getPrizePool());
+        winner = players[notReallyRandom()%players.length];
+        winner.transfer(getPrizePool());
         players = new address payable[](0);
     }
 
