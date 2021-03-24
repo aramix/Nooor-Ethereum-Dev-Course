@@ -4,51 +4,55 @@ pragma solidity 0.7.4;
 contract Campaign {
     address public manager;
     uint public minimumContribution;
-    address payable[] public approvers;
+    mapping(address => uint) public contributors;
+    
     struct Request {
         string description;
         uint value;
         address payable recipient;
         bool complete;
+        uint approvalCount;
+        mapping(address => address) approvals;
     }
     Request[] public requests;
+    
+    int[] numbers;
     
     constructor(uint minimum) {
         manager = msg.sender;
         minimumContribution = minimum * 1 ether;
     }
     
-    function contribute() public payable onlyApprover("Managers can't contribute to their own campaign") {
+    function contribute() public payable onlyContributor("Managers can't contribute to their own campaign") {
         require(msg.value >= minimumContribution, "Paied ether should be bigger than minimum contribution");
-        approvers.push(msg.sender);
+        contributors[msg.sender] = msg.value;
     }
     
     function createRequest(string memory desc, uint value, address payable recipient) public onlyManager("Only manager can create an expense request") {
-        Request memory newExpense = Request({
-            description: desc,
-            value: value,
-            recipient: recipient,
-            complete: false
-        });
-        
-        requests.push(newExpense);
+        Request storage newRequest = requests.push();
+        newRequest.value = value;
+        newRequest.description = desc;
+        newRequest.recipient = recipient;
+        newRequest.complete = false;
+        newRequest.approvalCount = 0;
     }
     
-    function getApprovers() public view returns(address payable[] memory) {
-        return approvers;
-    }
-    
-    function approveRequest(uint requestIndex) public onlyApprover("Only approver can approve the request") {
-        
-        // finalizeRequest(requestIndex);
+    function approveRequest(uint requestIndex) public onlyContributor("Only approver can approve the request") nonApprover(requestIndex, "Contributors can vote only once") {
+        requests[requestIndex].approvals[msg.sender] = msg.sender;
+        requests[requestIndex].approvalCount++;
     }
     
     function finalizeRequest(uint requestIndex) private {
         
     }
     
-    modifier onlyApprover(string memory desc) {
-        require(msg.sender != manager, desc);
+    modifier onlyContributor(string memory desc) {
+        require(msg.sender != manager && contributors[msg.sender] >= minimumContribution, desc);
+        _;
+    }
+    
+    modifier nonApprover(uint requestIndex, string memory desc) {
+        require(requests[requestIndex].approvals[msg.sender] != msg.sender, desc);
         _;
     }
     
