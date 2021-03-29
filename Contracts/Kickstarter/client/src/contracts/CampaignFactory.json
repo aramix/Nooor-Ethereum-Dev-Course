@@ -1,0 +1,1086 @@
+{
+  "contractName": "CampaignFactory",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "minimum",
+          "type": "uint256"
+        }
+      ],
+      "name": "createCampaign",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCampaigns",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"minimum\",\"type\":\"uint256\"}],\"name\":\"createCampaign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCampaigns\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/aramix/Nooor Ethereum Course/Dev/Nooor-Ethereum-Dev-Course/Contracts/Kickstarter/contracts/CampaignFactory.sol\":\"CampaignFactory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/aramix/Nooor Ethereum Course/Dev/Nooor-Ethereum-Dev-Course/Contracts/Kickstarter/contracts/Campaign.sol\":{\"keccak256\":\"0xb73c4b0af3873ceb3e6bb18f48906f2ea59d61d26bc0ad5bb66b3c9b4d4f3943\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://88c93bf8977d8799e1141c8e13dfb3d5e8dca138fd7550106a59a04f79b2d2f1\",\"dweb:/ipfs/Qmbcf1w3wS5mNGhW3T8T6Z73fjZyL4Q2qCEhzXVsmit4fp\"]},\"/Users/aramix/Nooor Ethereum Course/Dev/Nooor-Ethereum-Dev-Course/Contracts/Kickstarter/contracts/CampaignFactory.sol\":{\"keccak256\":\"0x05934f2b8cbe1d039e33c2973d9db3f8ef1f32c550ade8d11a7050ba0126696a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7d87232866563a9f948db4db0c445e3da823e2152694805d9e654743a1ee2399\",\"dweb:/ipfs/QmVYiWRu37VxTcVe4uEaU8svnHcJMfigTKYcKHTzEEW1Mv\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061133a806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c8063a3303a751461003b578063a6b0363314610069575b600080fd5b6100676004803603602081101561005157600080fd5b81019080803590602001909291905050506100c8565b005b610071610185565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b838110156100b4578082015181840152602081019050610099565b505050509050019250505060405180910390f35b600081336040516100d890610213565b808381526020018273ffffffffffffffffffffffffffffffffffffffff16815260200192505050604051809103906000f08015801561011b573d6000803e3d6000fd5b5090506000819080600181540180825580915050600190039060005260206000200160009091909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050565b6060600080548060200260200160405190810160405280929190818152602001828054801561020957602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190600101908083116101bf575b5050505050905090565b6110e4806102218339019056fe608060405234801561001057600080fd5b506040516110e43803806110e48339818101604052604081101561003357600080fd5b810190808051906020019092919080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550670de0b6b3a764000082026001819055505050611034806100b06000396000f3fe6080604052600436106100865760003560e01c806381d12c581161005957806381d12c58146101b95780638a9cfd55146102a1578063937e09b114610393578063d7bb99ba146103be578063d7d1bbdb146103c857610086565b80631f6d49421461008b5780634051ddac146100f0578063481c6a751461014d5780637569b3d71461018e575b600080fd5b34801561009757600080fd5b506100da600480360360208110156100ae57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610403565b6040518082815260200191505060405180910390f35b3480156100fc57600080fd5b5061010561041b565b604051808673ffffffffffffffffffffffffffffffffffffffff1681526020018581526020018481526020018381526020018281526020019550505050505060405180910390f35b34801561015957600080fd5b50610162610463565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561019a57600080fd5b506101a3610487565b6040518082815260200191505060405180910390f35b3480156101c557600080fd5b506101f2600480360360208110156101dc57600080fd5b810190808035906020019092919050505061048d565b60405180806020018681526020018573ffffffffffffffffffffffffffffffffffffffff1681526020018415158152602001838152602001828103825287818151815260200191508051906020019080838360005b83811015610262578082015181840152602081019050610247565b50505050905090810190601f16801561028f5780820380516001836020036101000a031916815260200191505b50965050505050505060405180910390f35b3480156102ad57600080fd5b50610391600480360360608110156102c457600080fd5b81019080803590602001906401000000008111156102e157600080fd5b8201836020820111156102f357600080fd5b8035906020019184600183028401116401000000008311171561031557600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610598565b005b34801561039f57600080fd5b506103a86107c2565b6040518082815260200191505060405180910390f35b6103c66107c8565b005b3480156103d457600080fd5b50610401600480360360208110156103eb57600080fd5b810190808035906020019092919050505061098d565b005b60036020528060005260406000206000915090505481565b60008060008060008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1660025460015447600480549050945094509450945094509091929394565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60025481565b6004818154811061049d57600080fd5b9060005260206000209060050201600091509050806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156105495780601f1061051e57610100808354040283529160200191610549565b820191906000526020600020905b81548152906001019060200180831161052c57829003601f168201915b5050505050908060010154908060020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16908060020160149054906101000a900460ff16908060030154905085565b6040518060600160405280602a8152602001610fd5602a913960008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161481906106a7576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825283818151815260200191508051906020019080838360005b8381101561066c578082015181840152602081019050610651565b50505050905090810190601f1680156106995780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b5047831115610701576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526037815260200180610f796037913960400191505060405180910390fd5b600060046001816001815401808255809150500390600052602060002090600502019050670de0b6b3a76400008402816001018190555084816000019080519060200190610750929190610e43565b50828160020160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060008160020160146101000a81548160ff021916908315150217905550600081600301819055505050505050565b60015481565b6040518060600160405280602f8152602001610f4a602f913960008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141581906108d8576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825283818151815260200191508051906020019080838360005b8381101561089d578082015181840152602081019050610882565b50505050905090810190601f1680156108ca5780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b50600154341015610934576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526035815260200180610f156035913960400191505060405180910390fd5b34600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190555060026000815480929190600101919050555050565b604051806060016040528060258152602001610fb06025913960008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614158190610a9d576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825283818151815260200191508051906020019080838360005b83811015610a62578082015181840152602081019050610a47565b50505050905090810190601f168015610a8f5780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b50816040518060400160405280601f81526020017f436f6e7472696275746f72732063616e20766f7465206f6e6c79206f6e6365008152503373ffffffffffffffffffffffffffffffffffffffff1660048381548110610af957fe5b906000526020600020906005020160040160003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614158190610c27576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825283818151815260200191508051906020019080838360005b83811015610bec578082015181840152602081019050610bd1565b50505050905090810190601f168015610c195780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b50600154600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020541015610cc2576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610eef6026913960400191505060405180910390fd5b600060048581548110610cd157fe5b90600052602060002090600502019050338160040160003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600301600081548092919060010191905055508060020160149054906101000a900460ff16610d9557610d9481610d9c565b5b5050505050565b6002805481610da757fe5b0481600301541115610e405760018160020160146101000a81548160ff0219169083151502179055508060020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc82600101549081150290604051600060405180830381858888f19350505050158015610e3e573d6000803e3d6000fd5b505b50565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282610e795760008555610ec0565b82601f10610e9257805160ff1916838001178555610ec0565b82800160010185558215610ec0579182015b82811115610ebf578251825591602001919060010190610ea4565b5b509050610ecd9190610ed1565b5090565b5b80821115610eea576000816000905550600101610ed2565b509056fe4f6e6c7920636f6e7472696275746f72732063616e20617070726f7665207265717565737473506169642065746865722073686f756c6420626520626967676572207468616e206d696e696d756d20636f6e747269627574696f6e4d616e61676572732063616e277420636f6e7472696275746520746f207468656972206f776e2063616d706169676e52657175657374656420616d6f756e742063616e277420626520686967686572207468616e20617661696c61626c652062616c616e63654f6e6c7920617070726f7665722063616e20617070726f76652074686520726571756573744f6e6c79206d616e616765722063616e2063726561746520616e20657870656e73652072657175657374a264697066735822122024e0ee27d71974690792d6f994e67d353622940467fc095c72483d3d816af3bb64736f6c63430007040033a2646970667358221220b9b003d7c33a703f30b8028bb32f7a2ddfd5498c37824b08bfcc0d6140f855a964736f6c63430007040033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c8063a3303a751461003b578063a6b0363314610069575b600080fd5b6100676004803603602081101561005157600080fd5b81019080803590602001909291905050506100c8565b005b610071610185565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b838110156100b4578082015181840152602081019050610099565b505050509050019250505060405180910390f35b600081336040516100d890610213565b808381526020018273ffffffffffffffffffffffffffffffffffffffff16815260200192505050604051809103906000f08015801561011b573d6000803e3d6000fd5b5090506000819080600181540180825580915050600190039060005260206000200160009091909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050565b6060600080548060200260200160405190810160405280929190818152602001828054801561020957602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190600101908083116101bf575b5050505050905090565b6110e4806102218339019056fe608060405234801561001057600080fd5b506040516110e43803806110e48339818101604052604081101561003357600080fd5b810190808051906020019092919080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550670de0b6b3a764000082026001819055505050611034806100b06000396000f3fe6080604052600436106100865760003560e01c806381d12c581161005957806381d12c58146101b95780638a9cfd55146102a1578063937e09b114610393578063d7bb99ba146103be578063d7d1bbdb146103c857610086565b80631f6d49421461008b5780634051ddac146100f0578063481c6a751461014d5780637569b3d71461018e575b600080fd5b34801561009757600080fd5b506100da600480360360208110156100ae57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610403565b6040518082815260200191505060405180910390f35b3480156100fc57600080fd5b5061010561041b565b604051808673ffffffffffffffffffffffffffffffffffffffff1681526020018581526020018481526020018381526020018281526020019550505050505060405180910390f35b34801561015957600080fd5b50610162610463565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561019a57600080fd5b506101a3610487565b6040518082815260200191505060405180910390f35b3480156101c557600080fd5b506101f2600480360360208110156101dc57600080fd5b810190808035906020019092919050505061048d565b60405180806020018681526020018573ffffffffffffffffffffffffffffffffffffffff1681526020018415158152602001838152602001828103825287818151815260200191508051906020019080838360005b83811015610262578082015181840152602081019050610247565b50505050905090810190601f16801561028f5780820380516001836020036101000a031916815260200191505b50965050505050505060405180910390f35b3480156102ad57600080fd5b50610391600480360360608110156102c457600080fd5b81019080803590602001906401000000008111156102e157600080fd5b8201836020820111156102f357600080fd5b8035906020019184600183028401116401000000008311171561031557600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610598565b005b34801561039f57600080fd5b506103a86107c2565b6040518082815260200191505060405180910390f35b6103c66107c8565b005b3480156103d457600080fd5b50610401600480360360208110156103eb57600080fd5b810190808035906020019092919050505061098d565b005b60036020528060005260406000206000915090505481565b60008060008060008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1660025460015447600480549050945094509450945094509091929394565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60025481565b6004818154811061049d57600080fd5b9060005260206000209060050201600091509050806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156105495780601f1061051e57610100808354040283529160200191610549565b820191906000526020600020905b81548152906001019060200180831161052c57829003601f168201915b5050505050908060010154908060020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16908060020160149054906101000a900460ff16908060030154905085565b6040518060600160405280602a8152602001610fd5602a913960008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161481906106a7576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825283818151815260200191508051906020019080838360005b8381101561066c578082015181840152602081019050610651565b50505050905090810190601f1680156106995780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b5047831115610701576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526037815260200180610f796037913960400191505060405180910390fd5b600060046001816001815401808255809150500390600052602060002090600502019050670de0b6b3a76400008402816001018190555084816000019080519060200190610750929190610e43565b50828160020160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060008160020160146101000a81548160ff021916908315150217905550600081600301819055505050505050565b60015481565b6040518060600160405280602f8152602001610f4a602f913960008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141581906108d8576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825283818151815260200191508051906020019080838360005b8381101561089d578082015181840152602081019050610882565b50505050905090810190601f1680156108ca5780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b50600154341015610934576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526035815260200180610f156035913960400191505060405180910390fd5b34600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190555060026000815480929190600101919050555050565b604051806060016040528060258152602001610fb06025913960008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614158190610a9d576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825283818151815260200191508051906020019080838360005b83811015610a62578082015181840152602081019050610a47565b50505050905090810190601f168015610a8f5780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b50816040518060400160405280601f81526020017f436f6e7472696275746f72732063616e20766f7465206f6e6c79206f6e6365008152503373ffffffffffffffffffffffffffffffffffffffff1660048381548110610af957fe5b906000526020600020906005020160040160003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614158190610c27576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825283818151815260200191508051906020019080838360005b83811015610bec578082015181840152602081019050610bd1565b50505050905090810190601f168015610c195780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b50600154600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020541015610cc2576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610eef6026913960400191505060405180910390fd5b600060048581548110610cd157fe5b90600052602060002090600502019050338160040160003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600301600081548092919060010191905055508060020160149054906101000a900460ff16610d9557610d9481610d9c565b5b5050505050565b6002805481610da757fe5b0481600301541115610e405760018160020160146101000a81548160ff0219169083151502179055508060020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc82600101549081150290604051600060405180830381858888f19350505050158015610e3e573d6000803e3d6000fd5b505b50565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282610e795760008555610ec0565b82601f10610e9257805160ff1916838001178555610ec0565b82800160010185558215610ec0579182015b82811115610ebf578251825591602001919060010190610ea4565b5b509050610ecd9190610ed1565b5090565b5b80821115610eea576000816000905550600101610ed2565b509056fe4f6e6c7920636f6e7472696275746f72732063616e20617070726f7665207265717565737473506169642065746865722073686f756c6420626520626967676572207468616e206d696e696d756d20636f6e747269627574696f6e4d616e61676572732063616e277420636f6e7472696275746520746f207468656972206f776e2063616d706169676e52657175657374656420616d6f756e742063616e277420626520686967686572207468616e20617661696c61626c652062616c616e63654f6e6c7920617070726f7665722063616e20617070726f76652074686520726571756573744f6e6c79206d616e616765722063616e2063726561746520616e20657870656e73652072657175657374a264697066735822122024e0ee27d71974690792d6f994e67d353622940467fc095c72483d3d816af3bb64736f6c63430007040033a2646970667358221220b9b003d7c33a703f30b8028bb32f7a2ddfd5498c37824b08bfcc0d6140f855a964736f6c63430007040033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "82:376:1:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "82:376:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;155:183;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;344:112;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;155:183;213:19;256:7;265:10;243:33;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;213:64;;288:25;319:11;288:43;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;155:183;;:::o;344:112::-;389:16;424:25;417:32;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;344:112;:::o;-1:-1:-1:-;;;;;;;;:::o",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.7.4;\n\nimport \"./Campaign.sol\";\n\ncontract CampaignFactory {\n    address[] deployedCampaignAddresses;\n\n    function createCampaign(uint256 minimum) public {\n        address newCampaign = address(new Campaign(minimum, msg.sender));\n\n        deployedCampaignAddresses.push(newCampaign);\n    }\n\n    function getCampaigns() public view returns (address[] memory) {\n        return deployedCampaignAddresses;\n    }\n}\n",
+  "sourcePath": "/Users/aramix/Nooor Ethereum Course/Dev/Nooor-Ethereum-Dev-Course/Contracts/Kickstarter/contracts/CampaignFactory.sol",
+  "ast": {
+    "absolutePath": "/Users/aramix/Nooor Ethereum Course/Dev/Nooor-Ethereum-Dev-Course/Contracts/Kickstarter/contracts/CampaignFactory.sol",
+    "exportedSymbols": {
+      "Campaign": [
+        294
+      ],
+      "CampaignFactory": [
+        334
+      ]
+    },
+    "id": 335,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 296,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:22:1"
+      },
+      {
+        "absolutePath": "/Users/aramix/Nooor Ethereum Course/Dev/Nooor-Ethereum-Dev-Course/Contracts/Kickstarter/contracts/Campaign.sol",
+        "file": "./Campaign.sol",
+        "id": 297,
+        "nodeType": "ImportDirective",
+        "scope": 335,
+        "sourceUnit": 295,
+        "src": "56:24:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [
+          294
+        ],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 334,
+        "linearizedBaseContracts": [
+          334
+        ],
+        "name": "CampaignFactory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 300,
+            "mutability": "mutable",
+            "name": "deployedCampaignAddresses",
+            "nodeType": "VariableDeclaration",
+            "scope": 334,
+            "src": "113:35:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_address_$dyn_storage",
+              "typeString": "address[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 298,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "113:7:1",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "id": 299,
+              "nodeType": "ArrayTypeName",
+              "src": "113:9:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                "typeString": "address[]"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 323,
+              "nodeType": "Block",
+              "src": "203:135:1",
+              "statements": [
+                {
+                  "assignments": [
+                    306
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 306,
+                      "mutability": "mutable",
+                      "name": "newCampaign",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 323,
+                      "src": "213:19:1",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 305,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "213:7:1",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 316,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 311,
+                            "name": "minimum",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 302,
+                            "src": "256:7:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          {
+                            "expression": {
+                              "id": 312,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": -15,
+                              "src": "265:3:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 313,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "src": "265:10:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            },
+                            {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          ],
+                          "id": 310,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "NewExpression",
+                          "src": "243:12:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_creation_nonpayable$_t_uint256_$_t_address_$returns$_t_contract$_Campaign_$294_$",
+                            "typeString": "function (uint256,address) returns (contract Campaign)"
+                          },
+                          "typeName": {
+                            "id": 309,
+                            "name": "Campaign",
+                            "nodeType": "UserDefinedTypeName",
+                            "referencedDeclaration": 294,
+                            "src": "247:8:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_Campaign_$294",
+                              "typeString": "contract Campaign"
+                            }
+                          }
+                        },
+                        "id": 314,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "243:33:1",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Campaign_$294",
+                          "typeString": "contract Campaign"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_Campaign_$294",
+                          "typeString": "contract Campaign"
+                        }
+                      ],
+                      "id": 308,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "235:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_address_$",
+                        "typeString": "type(address)"
+                      },
+                      "typeName": {
+                        "id": 307,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "235:7:1",
+                        "typeDescriptions": {}
+                      }
+                    },
+                    "id": 315,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "235:42:1",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "213:64:1"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 320,
+                        "name": "newCampaign",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 306,
+                        "src": "319:11:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "id": 317,
+                        "name": "deployedCampaignAddresses",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 300,
+                        "src": "288:25:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 319,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "src": "288:30:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 321,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "288:43:1",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 322,
+                  "nodeType": "ExpressionStatement",
+                  "src": "288:43:1"
+                }
+              ]
+            },
+            "functionSelector": "a3303a75",
+            "id": 324,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createCampaign",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 303,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 302,
+                  "mutability": "mutable",
+                  "name": "minimum",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 324,
+                  "src": "179:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 301,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "179:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "178:17:1"
+            },
+            "returnParameters": {
+              "id": 304,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "203:0:1"
+            },
+            "scope": 334,
+            "src": "155:183:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 332,
+              "nodeType": "Block",
+              "src": "407:49:1",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 330,
+                    "name": "deployedCampaignAddresses",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 300,
+                    "src": "424:25:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                      "typeString": "address[] storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 329,
+                  "id": 331,
+                  "nodeType": "Return",
+                  "src": "417:32:1"
+                }
+              ]
+            },
+            "functionSelector": "a6b03633",
+            "id": 333,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCampaigns",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 325,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "365:2:1"
+            },
+            "returnParameters": {
+              "id": 329,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 328,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 333,
+                  "src": "389:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 326,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "389:7:1",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 327,
+                    "nodeType": "ArrayTypeName",
+                    "src": "389:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "388:18:1"
+            },
+            "scope": 334,
+            "src": "344:112:1",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 335,
+        "src": "82:376:1"
+      }
+    ],
+    "src": "32:427:1"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/aramix/Nooor Ethereum Course/Dev/Nooor-Ethereum-Dev-Course/Contracts/Kickstarter/contracts/CampaignFactory.sol",
+      "exportedSymbols": {
+        "Campaign": [
+          294
+        ],
+        "CampaignFactory": [
+          334
+        ]
+      },
+      "license": "MIT"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".4"
+          ]
+        },
+        "id": 296,
+        "name": "PragmaDirective",
+        "src": "32:22:1"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 295,
+          "absolutePath": "/Users/aramix/Nooor Ethereum Course/Dev/Nooor-Ethereum-Dev-Course/Contracts/Kickstarter/contracts/Campaign.sol",
+          "file": "./Campaign.sol",
+          "scope": 335,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 297,
+        "name": "ImportDirective",
+        "src": "56:24:1"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            294
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            334
+          ],
+          "name": "CampaignFactory",
+          "scope": 335
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "mutability": "mutable",
+              "name": "deployedCampaignAddresses",
+              "scope": 334,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address[]",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "address[]"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "nonpayable",
+                      "type": "address"
+                    },
+                    "id": 298,
+                    "name": "ElementaryTypeName",
+                    "src": "113:7:1"
+                  }
+                ],
+                "id": 299,
+                "name": "ArrayTypeName",
+                "src": "113:9:1"
+              }
+            ],
+            "id": 300,
+            "name": "VariableDeclaration",
+            "src": "113:35:1"
+          },
+          {
+            "attributes": {
+              "functionSelector": "a3303a75",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "createCampaign",
+              "scope": 334,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "minimum",
+                      "scope": 324,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 301,
+                        "name": "ElementaryTypeName",
+                        "src": "179:7:1"
+                      }
+                    ],
+                    "id": 302,
+                    "name": "VariableDeclaration",
+                    "src": "179:15:1"
+                  }
+                ],
+                "id": 303,
+                "name": "ParameterList",
+                "src": "178:17:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 304,
+                "name": "ParameterList",
+                "src": "203:0:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        306
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "mutability": "mutable",
+                          "name": "newCampaign",
+                          "scope": 323,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "address",
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "address",
+                              "stateMutability": "nonpayable",
+                              "type": "address"
+                            },
+                            "id": 305,
+                            "name": "ElementaryTypeName",
+                            "src": "213:7:1"
+                          }
+                        ],
+                        "id": 306,
+                        "name": "VariableDeclaration",
+                        "src": "213:19:1"
+                      },
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "address",
+                          "type_conversion": true
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_contract$_Campaign_$294",
+                                  "typeString": "contract Campaign"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "type": "type(address)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "name": "address"
+                                },
+                                "id": 307,
+                                "name": "ElementaryTypeName",
+                                "src": "235:7:1"
+                              }
+                            ],
+                            "id": 308,
+                            "name": "ElementaryTypeNameExpression",
+                            "src": "235:7:1"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "contract Campaign",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "type": "function (uint256,address) returns (contract Campaign)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "name": "Campaign",
+                                      "referencedDeclaration": 294,
+                                      "type": "contract Campaign"
+                                    },
+                                    "id": 309,
+                                    "name": "UserDefinedTypeName",
+                                    "src": "247:8:1"
+                                  }
+                                ],
+                                "id": 310,
+                                "name": "NewExpression",
+                                "src": "243:12:1"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 302,
+                                  "type": "uint256",
+                                  "value": "minimum"
+                                },
+                                "id": 311,
+                                "name": "Identifier",
+                                "src": "256:7:1"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "type": "address payable"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": -15,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 312,
+                                    "name": "Identifier",
+                                    "src": "265:3:1"
+                                  }
+                                ],
+                                "id": 313,
+                                "name": "MemberAccess",
+                                "src": "265:10:1"
+                              }
+                            ],
+                            "id": 314,
+                            "name": "FunctionCall",
+                            "src": "243:33:1"
+                          }
+                        ],
+                        "id": 315,
+                        "name": "FunctionCall",
+                        "src": "235:42:1"
+                      }
+                    ],
+                    "id": 316,
+                    "name": "VariableDeclarationStatement",
+                    "src": "213:64:1"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "push",
+                              "type": "function (address)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 300,
+                                  "type": "address[] storage ref",
+                                  "value": "deployedCampaignAddresses"
+                                },
+                                "id": 317,
+                                "name": "Identifier",
+                                "src": "288:25:1"
+                              }
+                            ],
+                            "id": 319,
+                            "name": "MemberAccess",
+                            "src": "288:30:1"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 306,
+                              "type": "address",
+                              "value": "newCampaign"
+                            },
+                            "id": 320,
+                            "name": "Identifier",
+                            "src": "319:11:1"
+                          }
+                        ],
+                        "id": 321,
+                        "name": "FunctionCall",
+                        "src": "288:43:1"
+                      }
+                    ],
+                    "id": 322,
+                    "name": "ExpressionStatement",
+                    "src": "288:43:1"
+                  }
+                ],
+                "id": 323,
+                "name": "Block",
+                "src": "203:135:1"
+              }
+            ],
+            "id": 324,
+            "name": "FunctionDefinition",
+            "src": "155:183:1"
+          },
+          {
+            "attributes": {
+              "functionSelector": "a6b03633",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getCampaigns",
+              "scope": 334,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 325,
+                "name": "ParameterList",
+                "src": "365:2:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 333,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "address[]",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "address[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "address",
+                              "stateMutability": "nonpayable",
+                              "type": "address"
+                            },
+                            "id": 326,
+                            "name": "ElementaryTypeName",
+                            "src": "389:7:1"
+                          }
+                        ],
+                        "id": 327,
+                        "name": "ArrayTypeName",
+                        "src": "389:9:1"
+                      }
+                    ],
+                    "id": 328,
+                    "name": "VariableDeclaration",
+                    "src": "389:16:1"
+                  }
+                ],
+                "id": 329,
+                "name": "ParameterList",
+                "src": "388:18:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 329
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 300,
+                          "type": "address[] storage ref",
+                          "value": "deployedCampaignAddresses"
+                        },
+                        "id": 330,
+                        "name": "Identifier",
+                        "src": "424:25:1"
+                      }
+                    ],
+                    "id": 331,
+                    "name": "Return",
+                    "src": "417:32:1"
+                  }
+                ],
+                "id": 332,
+                "name": "Block",
+                "src": "407:49:1"
+              }
+            ],
+            "id": 333,
+            "name": "FunctionDefinition",
+            "src": "344:112:1"
+          }
+        ],
+        "id": 334,
+        "name": "ContractDefinition",
+        "src": "82:376:1"
+      }
+    ],
+    "id": 335,
+    "name": "SourceUnit",
+    "src": "32:427:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.4+commit.3f05b770.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xF2d745d4e38815f7DebB5b88dBEDbf093d7397Bc",
+      "transactionHash": "0xd2e9237eca365b6726317dab567a82ca53af0fafca2fdae96f576b882425a96d"
+    }
+  },
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-03-29T16:43:41.182Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
