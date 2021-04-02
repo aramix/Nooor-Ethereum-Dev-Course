@@ -1,0 +1,7 @@
+body {
+	margin: 0;
+}
+
+.ui.container {
+	margin-top: 5em !important;
+}

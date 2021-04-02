@@ -1,37 +1,52 @@
-import React, { Component } from 'react';
-import { Button, Dimmer, Loader, Segment } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { Button, Dimmer, Loader, Card } from 'semantic-ui-react';
 
-class Campaigns extends Component {
-	componentDidMount = async () => {
-		this.loadCampaigns();
-	};
+const Campaigns = ({ web3, accounts, factoryContract }) => {
+	const [campaigns, setCampaigns] = useState([
+		'0x787adf',
+		'0x18761873817632',
+		'0x187826734234',
+		'0x3721864232',
+	]);
 
-	loadCampaigns = async () => {
-		const { web3, accounts, contract } = this.props;
+	useEffect(() => {
+		const loadCampaigns = async () => {
+			if (factoryContract) {
+				// setCampaigns(await factoryContract.methods.getCampaigns().call());
+			}
+		};
+		loadCampaigns();
+	}, [factoryContract]);
 
-		// // Stores a given value, 5 by default.
-		// await contract.methods.set(5).send({ from: accounts[0] });
-
-		// // Get the value from the contract to prove it worked.
-		// const response = await contract.methods.get().call();
-
-		// // Update state with the result.
-		// this.setState({ storageValue: response });
-	};
-
-	render() {
-		const { web3 } = this.props;
-		return (
-			<>
-				<Dimmer active={!web3}>
-					<Loader />
-				</Dimmer>
-				<div className="Campaigns">
-					<Button>Create Campaign</Button>
-				</div>
-			</>
-		);
-	}
-}
+	return (
+		<>
+			<Dimmer active={!web3}>
+				<Loader />
+			</Dimmer>
+			<div className="Campaigns">
+				<Button icon="add" labelPosition="left">
+					Create Campaign
+				</Button>
+				<Card.Group>
+					{campaigns.map((campaign) => (
+						<Card>
+							<Card.Content>
+								<Card.Header>{campaign}</Card.Header>
+								<Card.Meta>{campaign}</Card.Meta>
+							</Card.Content>
+							<Card.Content extra>
+								<div className="ui two buttons">
+									<Button basic color="green">
+										View Campaign
+									</Button>
+								</div>
+							</Card.Content>
+						</Card>
+					))}
+				</Card.Group>
+			</div>
+		</>
+	);
+};
 
 export default Campaigns;
