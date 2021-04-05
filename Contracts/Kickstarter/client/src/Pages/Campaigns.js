@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Dimmer, Loader, Card } from 'semantic-ui-react';
 
-const Campaigns = ({ web3, accounts, factoryContract }) => {
-	const [campaigns, setCampaigns] = useState([
-		'0x787adf',
-		'0x18761873817632',
-		'0x187826734234',
-		'0x3721864232',
-	]);
+const Campaigns = ({ web3, factoryContract }) => {
+	const [campaigns, setCampaigns] = useState([]);
 
 	useEffect(() => {
 		const loadCampaigns = async () => {
 			if (factoryContract) {
-				// setCampaigns(await factoryContract.methods.getCampaigns().call());
+				const campaigns = await factoryContract.methods.getCampaigns().call();
+				if (campaigns.length) setCampaigns(campaigns);
 			}
 		};
 		loadCampaigns();
@@ -24,19 +21,21 @@ const Campaigns = ({ web3, accounts, factoryContract }) => {
 				<Loader />
 			</Dimmer>
 			<div className="Campaigns">
-				<Button icon="add" labelPosition="left">
-					Create Campaign
-				</Button>
-				<Card.Group>
-					{campaigns.map((campaign) => (
+				<Card.Group itemsPerRow={2}>
+					{campaigns.map((campaignAddress) => (
 						<Card>
 							<Card.Content>
-								<Card.Header>{campaign}</Card.Header>
-								<Card.Meta>{campaign}</Card.Meta>
+								<Card.Header>{campaignAddress}</Card.Header>
+								<Card.Meta>{campaignAddress}</Card.Meta>
 							</Card.Content>
 							<Card.Content extra>
 								<div className="ui two buttons">
-									<Button basic color="green">
+									<Button
+										as={Link}
+										basic
+										color="green"
+										to={`/campaigns/${campaignAddress}`}
+									>
 										View Campaign
 									</Button>
 								</div>

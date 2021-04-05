@@ -6,13 +6,13 @@ export default () => {
 	const history = useHistory();
 
 	return (
-		<Menu fixed="top" size="huge" inverted>
+		<Menu fixed="top" size="massive" inverted>
 			<Menu.Item name="branding">Kickstarter dApp</Menu.Item>
 			<Menu.Menu position="right">
 				<Menu.Item name="campaigns" onClick={() => history.push('/')}>
 					Campaigns
 				</Menu.Item>
-				<Menu.Item name="newCampaign" onClick={() => history.push('/campaign/new')}>
+				<Menu.Item name="newCampaign" onClick={() => history.push('/campaigns/new')}>
 					+
 				</Menu.Item>
 			</Menu.Menu>
