@@ -23,7 +23,7 @@ const Campaigns = ({ web3, factoryContract }) => {
 			<div className="Campaigns">
 				<Card.Group itemsPerRow={2}>
 					{campaigns.map((campaignAddress) => (
-						<Card>
+						<Card key={campaignAddress}>
 							<Card.Content>
 								<Card.Header>{campaignAddress}</Card.Header>
 								<Card.Meta>{campaignAddress}</Card.Meta>

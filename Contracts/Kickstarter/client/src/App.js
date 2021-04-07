@@ -6,9 +6,11 @@ import CampaignContract from './contracts/Campaign.json';
 import getWeb3 from './getWeb3';
 
 import Header from './Components/Header';
-import Campaigns from './Pages/Campaigns';
-import NewCampaign from './Pages/NewCampaign';
 import Campaign from './Pages/Campaign';
+import Campaigns from './Pages/Campaigns';
+import Requests from './Pages/Requests';
+import NewCampaign from './Pages/NewCampaign';
+import CampaignContainer from './Containers/CampaignContainer';
 
 const App = () => {
 	const [state, setState] = useState({ web3: null, accounts: null, contract: null });
@@ -53,7 +55,20 @@ const App = () => {
 							<NewCampaign factoryContract={contract} accounts={accounts} />
 						</Route>
 						<Route path="/campaigns/:address">
-							<Campaign contract={CampaignContract} web3={web3} accounts={accounts} />
+							<CampaignContainer
+								component={Campaign}
+								contract={CampaignContract}
+								web3={web3}
+								accounts={accounts}
+							/>
+						</Route>
+						<Route path="/campaigns/:address/requests">
+							<CampaignContainer
+								component={Requests}
+								contract={CampaignContract}
+								web3={web3}
+								accounts={accounts}
+							/>
 						</Route>
 						<Route exact path="/">
 							<Campaigns factoryContract={contract} web3={web3} />

@@ -13,7 +13,7 @@ export default ({ accounts, factoryContract }) => {
 	};
 
 	const handleMinimumContribution = (e) => {
-		setMimimumContribution(e.currentTarget.value);
+		setMimimumContribution(parseInt(e.currentTarget.value));
 	};
 
 	return (
