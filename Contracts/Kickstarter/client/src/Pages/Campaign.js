@@ -1,19 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Form, Button, Card, List, Grid } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Form, Button, Card, List, Grid, Message, Label, Input } from 'semantic-ui-react';
 
-export default ({ campaign, address, summary, accounts }) => {
+export default ({ web3, campaign, address, summary, accounts }) => {
+	const [error, setError] = useState();
 	const [contributionAmount, setContributionAmount] = useState(summary.minimumContribution);
 
 	const handleContribution = (e) => {
-		setContributionAmount(parseInt(e.currentTarget.value));
+		setContributionAmount(e.currentTarget.value);
 	};
 
 	const contribute = async () => {
-		await campaign.methods.contribute().send({
-			from: accounts[0],
-			value: contributionAmount,
-		});
+		try {
+			await campaign.methods.contribute().send({
+				from: accounts[0],
+				value: web3.utils.toWei(contributionAmount, 'ether'),
+			});
+		} catch (error) {
+			const parsedError = JSON.parse(
+				error.message
+					.replace('Error: [ethjs-query] while formatting outputs from RPC ', '')
+					.replace("'{", '{')
+					.replace("}'", '}')
+			);
+			const errorObj = parsedError.value.data.data;
+			const errorReason = errorObj[Object.keys(errorObj)[0]].reason;
+			setError(errorReason);
+		}
 	};
 
 	return (
@@ -24,10 +37,10 @@ export default ({ campaign, address, summary, accounts }) => {
 					<Card fluid>
 						<Card.Content>
 							<Card.Header>{address}</Card.Header>
-							<Card.Meta>{`Minimum: ${summary.minimumContribution}`}</Card.Meta>
+							<Card.Meta>{`Minimum: ${`${summary.minimumContribution} ether`}`}</Card.Meta>
 							<List>
 								<List.Item header="Campaign creator" content={summary.manager} />
-								<List.Item header="Balance" content={summary.balance} />
+								<List.Item header="Balance" content={`${summary.balance} ether`} />
 								<List.Item
 									header="Contributors count"
 									content={summary.contributorsCount}
@@ -38,18 +51,37 @@ export default ({ campaign, address, summary, accounts }) => {
 								/>
 							</List>
 						</Card.Content>
+						<Card.Content extra>
+							<div className="ui two buttons">
+								<Button
+									as={Link}
+									basic
+									color="green"
+									to={`/campaigns/${address}/requests`}
+								>
+									View Campaign Requests
+								</Button>
+							</div>
+						</Card.Content>
 					</Card>
 				</Grid.Column>
 				<Grid.Column>
-					<Form onSubmit={contribute}>
+					<Form onSubmit={contribute} error>
+						<Message negative hidden={!error}>
+							<p>{error}</p>
+						</Message>
 						<Form.Field>
-							<label>Contribution amount (wei)</label>
-							<input
-								type="number"
-								onChange={handleContribution}
-								placeholder="Enter amount to contribute in wei"
-								min={summary.minimumContribution}
-							/>
+							<label>Contribution amount</label>
+							<Input labelPosition="right" type="text" placeholder="Amount">
+								<input
+									type="number"
+									step="0.000000000000000001"
+									min={summary.minimumContribution}
+									onChange={handleContribution}
+									placeholder="Enter the amount to contribute"
+								/>
+								<Label>ether</Label>
+							</Input>
 						</Form.Field>
 						<Button type="submit" floated="right">
 							Contribute

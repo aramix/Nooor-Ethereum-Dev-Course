@@ -11,6 +11,7 @@ import Campaigns from './Pages/Campaigns';
 import Requests from './Pages/Requests';
 import NewCampaign from './Pages/NewCampaign';
 import CampaignContainer from './Containers/CampaignContainer';
+import NewRequest from './Pages/NewRequest';
 
 const App = () => {
 	const [state, setState] = useState({ web3: null, accounts: null, contract: null });
@@ -52,21 +53,33 @@ const App = () => {
 				<Container>
 					<Switch>
 						<Route path="/campaigns/new">
-							<NewCampaign factoryContract={contract} accounts={accounts} />
-						</Route>
-						<Route path="/campaigns/:address">
-							<CampaignContainer
-								component={Campaign}
-								contract={CampaignContract}
+							<NewCampaign
 								web3={web3}
+								factoryContract={contract}
+								accounts={accounts}
+							/>
+						</Route>
+						<Route path="/campaigns/:address/requests/new">
+							<CampaignContainer
+								web3={web3}
+								component={NewRequest}
+								contract={CampaignContract}
 								accounts={accounts}
 							/>
 						</Route>
 						<Route path="/campaigns/:address/requests">
 							<CampaignContainer
+								web3={web3}
 								component={Requests}
 								contract={CampaignContract}
+								accounts={accounts}
+							/>
+						</Route>
+						<Route path="/campaigns/:address">
+							<CampaignContainer
 								web3={web3}
+								component={Campaign}
+								contract={CampaignContract}
 								accounts={accounts}
 							/>
 						</Route>

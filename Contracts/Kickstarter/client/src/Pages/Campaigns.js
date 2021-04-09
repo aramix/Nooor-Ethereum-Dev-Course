@@ -8,8 +8,19 @@ const Campaigns = ({ web3, factoryContract }) => {
 	useEffect(() => {
 		const loadCampaigns = async () => {
 			if (factoryContract) {
-				const campaigns = await factoryContract.methods.getCampaigns().call();
-				if (campaigns.length) setCampaigns(campaigns);
+				const campaignsCount = await factoryContract.methods.getCampaignsCount().call();
+				console.log('campaignsCount', campaignsCount);
+				if (campaignsCount) {
+					const campaigns = await Promise.all(
+						Array(campaignsCount)
+							.fill()
+							.map((e, index) =>
+								factoryContract.methods.deployedCampaigns(index).call()
+							)
+					);
+					setCampaigns(campaigns);
+					console.log(campaigns);
+				}
 			}
 		};
 		loadCampaigns();
@@ -22,11 +33,12 @@ const Campaigns = ({ web3, factoryContract }) => {
 			</Dimmer>
 			<div className="Campaigns">
 				<Card.Group itemsPerRow={2}>
-					{campaigns.map((campaignAddress) => (
+					{campaigns.map(({ campaignAddress, description, name }) => (
 						<Card key={campaignAddress}>
 							<Card.Content>
-								<Card.Header>{campaignAddress}</Card.Header>
+								<Card.Header>{name}</Card.Header>
 								<Card.Meta>{campaignAddress}</Card.Meta>
+								<Card.Description>{description}</Card.Description>
 							</Card.Content>
 							<Card.Content extra>
 								<div className="ui two buttons">

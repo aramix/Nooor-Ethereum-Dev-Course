@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Campaign from '../Pages/Campaign';
-
 export default ({ web3, accounts, contract, component: Component }) => {
 	const { address } = useParams();
 	const [summary, setSummary] = useState({});
@@ -10,18 +8,16 @@ export default ({ web3, accounts, contract, component: Component }) => {
 
 	useEffect(() => {
 		if (!web3) return;
-		console.log(address);
 		const campaignInstance = new web3.eth.Contract(contract.abi, address);
 
 		const loadCampaign = async () => {
-			console.log('loading campaign...');
 			const campaignSummary = await campaignInstance.methods.getSummary().call();
 			setCampaign(campaignInstance);
 			setSummary({
 				manager: campaignSummary[0],
 				contributorsCount: campaignSummary[1],
-				minimumContribution: campaignSummary[2],
-				balance: campaignSummary[3],
+				minimumContribution: web3.utils.fromWei(campaignSummary[2], 'ether'),
+				balance: web3.utils.fromWei(campaignSummary[3], 'ether'),
 				numberOfRequests: campaignSummary[4],
 			});
 		};
@@ -29,6 +25,12 @@ export default ({ web3, accounts, contract, component: Component }) => {
 	}, [web3, accounts, address]);
 
 	return (
-		<Component summary={summary} address={address} campaign={campaign} accounts={accounts} />
+		<Component
+			web3={web3}
+			summary={summary}
+			address={address}
+			campaign={campaign}
+			accounts={accounts}
+		/>
 	);
 };

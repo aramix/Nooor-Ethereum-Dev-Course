@@ -31,7 +31,8 @@ contract Campaign {
             msg.value >= minimumContribution,
             "Paid ether should be bigger than minimum contribution"
         );
-        contributors[msg.sender] = msg.value;
+        require(contributors[msg.sender] == 0, "You can contribute only once");
+        contributors[msg.sender] += msg.value;
         contributorsCount++;
     }
 
@@ -74,6 +75,10 @@ contract Campaign {
             request.complete = true;
             request.recipient.transfer(request.value);
         }
+    }
+
+    function getRequestsCount() public view returns (uint256) {
+        return requests.length;
     }
 
     function getSummary()
